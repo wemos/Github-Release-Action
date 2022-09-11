@@ -16,7 +16,7 @@ jobs:
     - name: Create a Release
       uses: wemos/Github-Release-Action@main
       env:
-        GITHUB_TOKEN: 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
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
         title: ${{ github.sha }}
 
@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: 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 # for pushing to protected branch
+          token: ${{ secrets.RELEASE_TOKEN }} # for pushing to protected branch
       - name: Publish new version
         run: |
           git config --global user.email "no_reply@gohr.digital"
